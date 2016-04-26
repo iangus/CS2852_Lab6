@@ -19,7 +19,7 @@ public class WordFinder {
     /**
      * Controls whether or not the GUI is displayed.
      */
-    public static final boolean GUI_ENABLED = true;
+    public static final boolean GUI_ENABLED = false;
     // TODO: you may wish to disable the GUI during benchmarking
 
     /**
@@ -108,7 +108,7 @@ public class WordFinder {
         //  b. col is valid
         //  c. will not exceeded maximum length of word
         //  d. game piece has not been visited
-        if(row >= 0 && row < rows && col > 0 && col <= cols
+        if(row >= 0 && row < rows && col >= 0 && col < cols
                 && !getGamePiece(row,col).hasBeenVisited() && currWord.length() < MAX_WORD_LENGTH) {
 
 
@@ -144,7 +144,7 @@ public class WordFinder {
             // 6. Start back-tracking after the recursive calls
             //    are finished... Unmark piece to indicate it has
             //    not been visited. (use method in this class)
-            clearVisitedFlag(col, row);
+            clearVisitedFlag(row, col);
 
             // 7. Strip off the last character added to the word
             currWord = currWord.substring(0, currWord.length()-1);
@@ -202,7 +202,7 @@ public class WordFinder {
                 clearVisitedFlags();
 
                 // TODO: In call below, true: 8-way search, false: 4-way search
-                recursiveSearch(r, c, false);
+                recursiveSearch(r, c, true);
 
                 totalTime += (System.currentTimeMillis() - beginTime);
                 if(!GUI_ENABLED) {

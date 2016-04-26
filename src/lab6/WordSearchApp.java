@@ -30,7 +30,7 @@ public class WordSearchApp {
 //TODO:
     // Replace SortedArrayList with ArrayList or LinkedList to observe
     // changes in how fast the application runs.
-    private final Dictionary dictionary = new Dictionary(new SortedArrayList<String>());
+    private final Dictionary dictionary = new Dictionary(new ArrayList<String>());
 
     /**
      * List of game pieces that compose the game board
